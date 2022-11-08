@@ -1,0 +1,31 @@
+<p style="color: green"><%= notice %></p>
+
+  <div class="d-flex justify-content-around">
+    <h2> <%= link_to "Créer un évènement", new_event_path %> </h2>
+  </div>
+<div id="events">
+  <% @events.each do |event| %>
+    <%= event.title %> <br>
+    <%= event.price %>€ <br>
+    Oprganisé par : <%= link_to event.admin.first_name, user_path(event.admin_id) %>
+    <p>
+      <%= link_to "Show this event", event %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New event", new_event_path %>
+
+
+<div class="row">
+  <div class="col-sm-4">
+    <% @events.each do |event| %>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title"><%= event.title %> <br></h5>
+        <p class="card-text"><%= event.price %>€ <br></p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+      <% end %>
+    </div>
+  </div>
